@@ -17,7 +17,7 @@ RUN npm install
 COPY . .
 
 # Bind the port that the image will run on
-EXPOSE 8100
+EXPOSE 8080
 
 # Define the Docker image's behavior at runtime
-CMD ["ionic", "serve"]
+CMD ["ionic", "serve", "--port", "8080"]
