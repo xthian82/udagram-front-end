@@ -1,0 +1,5 @@
+# Use NodeJS base image
+FROM node:12
+
+# install ionic
+RUN npm install -g @ionic/cli

@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: udagram-frontent
+  labels:
+    app: udagram-frontent
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: udagram-frontent
+  template:
+    metadata:
+      labels:
+        app: udagram-frontent
+    spec:
+      containers:
+        - name: udagram-frontent
+          image: xthian82/udagram-frontent
+          ports:
+            - containerPort: 8100
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: udagram-frontent
+  name: udagram-frontent-svc
+spec:
+  type: LoadBalancer
+  externalName: udagram-frontent
+  ports:
+    - name: "80"
+      port: 80
+      targetPort: 8100
+  selector:
+    app: udagram-frontent
