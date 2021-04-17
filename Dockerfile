@@ -20,4 +20,4 @@ COPY . .
 EXPOSE 8080
 
 # Define the Docker image's behavior at runtime
-CMD ["ionic", "serve", "--port", "8080"]
+CMD ["ionic", "serve", "--port", "80"]
