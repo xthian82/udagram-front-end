@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: udagram-frontent
+  name: udagram-frontent-svc
+spec:
+  type: LoadBalancer
+  externalName: udagram-frontent
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+  selector:
+    app: udagram-frontent
