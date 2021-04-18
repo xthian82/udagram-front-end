@@ -1,5 +1,5 @@
 # Use NodeJS base image
-FROM xthian82/docker-ionic
+FROM xthian82/docker-ionic as ionic
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -15,12 +15,10 @@ RUN npm install
 
 # Copy app source
 COPY . .
+RUN ionic build
 
-# Bind the port that the image will run on
-EXPOSE 80
+## Run
+FROM nginx:alpine
 
-# build the project
-CMD ["ionic", "build"]
-
-# Define the Docker image's behavior at runtime
-CMD ["ionic", "serve", "--port", "80"]
+#COPY www /usr/share/nginx/html
+COPY --from=ionic  /usr/src/app/www /usr/share/nginx/html
