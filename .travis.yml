@@ -11,9 +11,9 @@ before_script:
 
 script:
   - docker --version
-  - docker build -t udagram-frontent .
-  - docker tag udagram-frontent xthian82/udagram-frontent
+  - docker build -t udagram-frontend .
+  - docker tag udagram-frontend xthian82/udagram-frontend
 
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push xthian82/udagram-frontent
+  - docker push xthian82/udagram-frontend
