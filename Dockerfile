@@ -1,5 +1,5 @@
 # Use NodeJS base image
-FROM xthian82/docker-ionic as ionic
+FROM beevelop/ionic as ionic
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -8,10 +8,10 @@ WORKDIR /usr/src/app
 # package.json and package-lock.json
 COPY package*.json ./
 
-COPY ionic.config.json ./
+# COPY ionic.config.json ./
 
 # Install dependencies
-RUN npm install
+RUN npm ci
 
 # Copy app source
 COPY . .
