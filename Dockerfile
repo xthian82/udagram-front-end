@@ -19,5 +19,8 @@ COPY . .
 # Bind the port that the image will run on
 EXPOSE 80
 
+# build the project
+CMD ["ionic", "build"]
+
 # Define the Docker image's behavior at runtime
 CMD ["ionic", "serve", "--port", "80"]
